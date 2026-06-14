@@ -1,0 +1,4 @@
+build
+examples
+pictures_readme
+poidpy

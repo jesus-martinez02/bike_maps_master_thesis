@@ -1,0 +1,63 @@
+services:
+  postgis:
+    image: pgrouting/pgrouting:16-3.5-3.8
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+      - ./docker/postgis/init.sql:/docker-entrypoint-initdb.d/init.sql
+  # fastapi:
+  #   build:
+  #     context: ./src/python
+  #     dockerfile: ./api/Dockerfile      
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - postgis
+  #   volumes:
+  #     - ./src/python:/app
+  #   command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+
+  bun:
+    build:
+      context: src/bun
+    ports:
+      - "3000:3000"
+    volumes:
+    - ./src/bun:/app
+    command: bun src/index.ts
+
+  martin:
+    image: ghcr.io/maplibre/martin:latest
+    ports:
+      - "3001:3000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgis:5432/${POSTGRES_DB}
+      MAPS: /maps
+    volumes:
+        - ./src/bun/martin_maps:/maps
+    depends_on:
+      - postgis
+
+  nginx:
+   image: nginx:alpine
+   restart: unless-stopped
+   ports:
+     - "8080:80"
+   volumes:
+     - ./cache:/var/cache/nginx
+     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+   depends_on:
+     - martin
+
+  # osm2pgrouting:
+  #    image: iboates/osm2pgrouting:latest
+
+volumes:
+  postgis_data:

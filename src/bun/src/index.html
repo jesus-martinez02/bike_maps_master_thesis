@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bikemaps Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://unpkg.com/maplibre-gl@4.0.2/dist/maplibre-gl.css" rel="stylesheet" />
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map-wrapper {
+        position: relative;  
+        }   
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+
+        #filters {
+            position: absolute;
+            top: 20px;
+            left: 20px;           
+            z-index: 1000;        
+
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .legend {
+            background: white;
+            padding: 8px 10px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 1;
+        }
+
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="map-wrapper">
+        <div id="map"></div>
+<!-- 
+        <div id="filters">
+            <label><input type="checkbox" value="Track" checked> Track</label>
+            <label><input type="checkbox" value="Right_Track" checked> Right Track</label>
+            <label><input type="checkbox" value="Left_Track" checked> Left Track</label>            
+            <label><input type="checkbox" value="Track_shared" checked> Track Shared</label>
+            <label><input type="checkbox" value="Cycling_Street" checked> Cycling Street</label>
+            <label><input type="checkbox" value="Lane" checked> Lane</label>
+            <label><input type="checkbox" value="Crossing" checked> Crossing</label>
+            <label><input type="checkbox" value="Left_Lane" checked> Left Lane</label>
+            <label><input type="checkbox" value="Right_Lane" checked> Right Lane</label>
+            <label><input type="checkbox" value="Unpaved" checked> Unpaved</label>
+            <label><input type="checkbox" value="Street" checked> Street</label>
+        </div>
+    </div> -->
+
+    <div class="legend">
+        <h4>Legend</h4>
+                <i style="background:#036bfc"></i> Cycle Track<br>
+                <i style="background:#08d8fc"></i> Track Shared<br>
+                <i style="background:#ce52f7"></i> Cycling Street<br>
+                <i style="background:#72f261"></i> Both Lane<br>
+                <i style="background:#1f750c"></i> Left Lane<br>
+                <!-- <i style="background:#1f5c2f"></i> Right Lane<br> -->
+                <i style="background:#f2cf07"></i> Shared Lane<br>
+                <i style="background:#826423"></i> Unpaved<br>
+                <i style="background:#757373"></i> Street<br>
+                <!-- <i style="background:#7777ff"></i> Other -->
+    </div>
+
+    <!-- <button onclick="locateUser()">Locate Me</button> -->
+    
+
+    <input type="range" id="percentileSlider" min="0" max="100" step="5" value="0" />
+    <label id="sliderLabel">0%</label>
+    <a class="switch" href="/octolinear">
+    Switch to octolinear view
+    </a>
+    <script type="module" src="/src/main.js"></script>
+
+</body>
+</html>
+
