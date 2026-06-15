@@ -1,0 +1,16 @@
+FROM oven/bun
+
+WORKDIR /app
+
+# Copy the lock and package file
+COPY bun.lock . 
+COPY package.json . 
+
+# Install dependencies
+RUN bun install --frozen-lockfile
+
+# Copy your source code
+# If only files in the src folder changed, this is the only step that gets executed!
+#COPY src ./src 
+
+CMD ["bun", "src/index.ts"]

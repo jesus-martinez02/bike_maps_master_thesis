@@ -1,0 +1,57 @@
+# Poidpy
+***Demand Generation Framework based on Points-of-Interests***
+
+Upon usage, please cite: 
+
+    Notelaers, Lotte, Verstraete, J., Vansteenwegen, P., and Tampère, C.M.J. "A travel demand modeling framework based on OpenStreetMap." Discover Civil Engineering 1.1 (2024): 26.
+***
+Poidpy is a transport demand modelling toolkit. The core idea is that POIs form the main origins and destinations of trips and hence can be used to estimate travel demand between regions. It uses the freely-available disaggregate land use data from OpenStreetMap to estimate demand for any region. 
+
+Functionalities:
+- OSM data extraction, cleaning and enhancing POI
+- OSM data categorization into residential and activity POIs
+- Production and attraction model calibration
+- Production and attraction model estimation
+- Visualisations of POIs, production and attraction calibration and estimation
+***
+
+<img src="pictures_readme/Leuven_werk&zakelijk_attractie.png"  width="400" height="400">
+<img src="pictures_readme/Antwerpen_activity_POIs.png"   width="400" height="400">
+
+***
+## Installation
+
+Download or clone the repository. 
+
+For poidpy to be able to run, make sure your environment is as in the [environment_poidpy_1_0.yml](https://gitlab.kuleuven.be/ITSCreaLab/public-toolboxes/poidpy/-/blob/master/environment.yml) file (this file only works for Windows).
+We recommend installing the packages via [Anaconda](https://docs.anaconda.com/anaconda/navigator/).
+Assuming conda is installed, navigate to the folder containing the environment_poidpy_1_0.yml or pass on the full path.
+
+## Documentation
+
+Notelaers, L., Verstraete, J., Vansteenwegen, P., and Tampère, C.M.J. (2024). A Travel Demand Modeling Framework based on OpenStreetMap [Manuscript submitted for publication]. KU Leuven Insitute for Mobility (CIB), KU Leuven.
+
+## Examples
+Use examples are included in the repository as notebooks. As proof-of-concept:
+- A production and attraction model is calibrated on the city of Antwerp (Belgium).
+- Transferability of coefficients is validated on the city of Ghent (Belgium).
+- The correspondence between activity categories and different trip purposes when estimating travel demand is analysed bas on a case study for the city of Leuven (Belgium).
+
+## Support
+In case of questions, feedback, ideas,... please contact [lotte.notelaers@kuleuven.be](lotte.notelaers@kuleuven.be) and [ITScrealab@kuleuven.be](ITScrealab@kuleuven.be).
+
+## Acknowledgment
+This research was part of the [Flemish DUET pilot](https://www.digitalurbantwins.com/) (EU Horizon 2020; grant agreement No.870697). The research was funded by FWO (project number: 1S80623N). Dana Borremans of the Flemish Ministry of Mobility and Public Works (MOW) is acknowledged for providing travel demand data of Flanders. Map data copyrighted OpenStreetMap contributors and available from [https://www.openstreetmap.org](https://www.openstreetmap.org).
+
+## License
+NU GENERAL PUBLIC LICENSE Version 3, 29 June 2007, see [license.txt](https://gitlab.kuleuven.be/ITSCreaLab/public-toolboxes/poidpy/-/blob/master/LICENSE.txt).
+
+## Version
+version 1.0.0
+Compared to previous versions the most significant change is:
+- The categorization framework is completely redesigned. So that:
+  - mixed-use of buildings is better accounted for.
+  - (although rather pragmatically) the fact buildings can be multi-level is better accounted for.
+  - the surface of buildings is taken into account.
+  - the categorization framework now uses weights to indicated whether a building belongs to a certain POI type.
+

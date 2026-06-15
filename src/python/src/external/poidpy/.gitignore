@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+/cache
+/.idea
+/logs
+poidpy/__pycache__/
+Development/cache/

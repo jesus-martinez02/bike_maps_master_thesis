@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "poidpy"
+version = "1.0.0"
+description = "Demand Generation Based on Points-of-Interest."
+readme = "README.md"
+authors = [{ email = "itscrealab@kuleuven.be" }]
+license = { text = "GPL-3.0" }
+dependencies = ["osmnx==1.6.0", "bokeh", "colorcet","scikit-learn","statsmodels","matplotlib"]
+
+[tool.setuptools.packages.find]
+where = ["."]

@@ -1,0 +1,35 @@
+# Python
+*.pyc
+*.pyo
+__pycache__
+*.pyd
+*.db
+
+# Virtualenvs
+venv/
+.env/
+
+# Docker and Build Files
+docker-compose.override.yml
+.docker/
+.dockerignore
+Dockerfile
+*.log
+
+# Node.js & Bun
+node_modules/
+bun.lockb
+dist/
+*.tgz
+
+# IDE & Editor folders
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Miscellaneous
+*.env
+*.bak
+*.tmp
+.DS_Store
